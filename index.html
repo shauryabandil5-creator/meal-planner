@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Veg Meal Planner</title>
+
+  <!-- Connect CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <h1>🥗 Veg Meal Planner</h1>
+
+  <div class="container">
+
+    <label>Liked Foods:</label>
+    <input type="text" id="like" placeholder="paneer, dosa">
+
+    <label>Disliked Foods:</label>
+    <input type="text" id="dislike" placeholder="lauki">
+
+    <label>Goal:</label>
+    <select id="goal">
+      <option value="loss">Weight Loss</option>
+      <option value="gain">Weight Gain</option>
+      <option value="maintain">Maintain</option>
+    </select>
+
+    <button onclick="generateMeal()">Generate Weekly Plan</button>
+
+    <div id="result"></div>
+
+  </div>
+
+  <!-- Connect JS -->
+  <script src="script.js"></script>
+
+</body>
+</html>
