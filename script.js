@@ -24,6 +24,10 @@ function generateMeal() {
   ).map(food => food.value);
 
   let goal = document.getElementById("goal").value;
+  let age = Number(document.getElementById("age").value);
+let height = Number(document.getElementById("height").value);
+let weight = Number(document.getElementById("weight").value);
+let activity = document.getElementById("activity").value;
 
   let filteredFoods = foods.filter(food =>
     selectedFoods.includes(food.name)
@@ -33,10 +37,14 @@ function generateMeal() {
   let lunch = filteredFoods.filter(f => f.type === "lunch");
   let dinner = filteredFoods.filter(f => f.type === "dinner");
 
-  let targetCalories = 2000;
+ let targetCalories = weight * 30;
 
-  if (goal === "loss") targetCalories = 1500;
-  if (goal === "gain") targetCalories = 2500;
+if (activity === "moderate") targetCalories += 200;
+if (activity === "gym") targetCalories += 400;
+if (activity === "athlete") targetCalories += 600;
+
+if (goal === "loss") targetCalories -= 300;
+if (goal === "gain") targetCalories += 300;
 
   function pickMeal(arr, maxCalories) {
 
