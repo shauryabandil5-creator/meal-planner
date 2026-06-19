@@ -231,15 +231,20 @@ let totalFat =
   l.fat +
   d.fat;
 
-    output += `
-      <div class="day-card">
-        <h4>${day}</h4>
-<p>🔥 Calories: ${totalCalories} kcal</p>
-<p>💪 Protein: ${totalProtein} g</p>
-<p>🍚 Carbs: ${totalCarbs} g</p>
-<p>🥜 Fat: ${totalFat} g</p>
-      </div>
-    `;
+output += `
+  <div class="day-card">
+    <h4>${day}</h4>
+
+    <p>🍳 Breakfast: ${b.name}</p>
+    <p>🍛 Lunch: ${l.name}</p>
+    <p>🍲 Dinner: ${d.name}</p>
+
+    <p>🔥 Calories: ${totalCalories} kcal</p>
+    <p>💪 Protein: ${totalProtein} g</p>
+    <p>🍚 Carbs: ${totalCarbs} g</p>
+    <p>🥜 Fat: ${totalFat} g</p>
+  </div>
+`;
   });
 
   document.getElementById("result").innerHTML = output;
