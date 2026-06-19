@@ -1,3 +1,22 @@
+const foods = [
+  { name: "Poha", calories: 180, type: "breakfast" },
+  { name: "Idli", calories: 120, type: "breakfast" },
+  { name: "Dosa", calories: 200, type: "breakfast" },
+  { name: "Upma", calories: 200, type: "breakfast" },
+  { name: "Oats", calories: 150, type: "breakfast" },
+
+  { name: "Dal Chawal", calories: 300, type: "lunch" },
+  { name: "Rajma Chawal", calories: 350, type: "lunch" },
+  { name: "Chole", calories: 320, type: "lunch" },
+  { name: "Roti Sabzi", calories: 250, type: "lunch" },
+
+  { name: "Khichdi", calories: 220, type: "dinner" },
+  { name: "Dal Roti", calories: 250, type: "dinner" },
+  { name: "Palak Paneer", calories: 300, type: "dinner" },
+  { name: "Vegetable Curry", calories: 280, type: "dinner" },
+  { name: "Soybean Curry", calories: 320, type: "dinner" }
+];
+
 function generateMeal() {
 
   const selectedFoods = Array.from(
@@ -6,7 +25,6 @@ function generateMeal() {
 
   let goal = document.getElementById("goal").value;
 
-  // Keep only selected foods
   let filteredFoods = foods.filter(food =>
     selectedFoods.includes(food.name)
   );
@@ -16,35 +34,65 @@ function generateMeal() {
   let dinner = filteredFoods.filter(f => f.type === "dinner");
 
   let targetCalories = 2000;
+
   if (goal === "loss") targetCalories = 1500;
   if (goal === "gain") targetCalories = 2500;
 
   function pickMeal(arr, maxCalories) {
+
     if (arr.length === 0) {
-      return { name: "No option selected", calories: 0 };
+      return {
+        name: "No option selected",
+        calories: 0
+      };
     }
 
-    let options = arr.filter(f => f.calories <= maxCalories);
+    let options = arr.filter(
+      f => f.calories <= maxCalories
+    );
 
     if (options.length === 0) {
       options = arr;
     }
 
-    return options[Math.floor(Math.random() * options.length)];
+    return options[
+      Math.floor(Math.random() * options.length)
+    ];
   }
 
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  let days = [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ];
+
   let output = "<h3>📅 Weekly Meal Plan</h3>";
 
   days.forEach(day => {
-    let b = pickMeal(breakfast, targetCalories * 0.3);
-    let l = pickMeal(lunch, targetCalories * 0.4);
-    let d = pickMeal(dinner, targetCalories * 0.3);
+
+    let b = pickMeal(
+      breakfast,
+      targetCalories * 0.3
+    );
+
+    let l = pickMeal(
+      lunch,
+      targetCalories * 0.4
+    );
+
+    let d = pickMeal(
+      dinner,
+      targetCalories * 0.3
+    );
 
     let total =
-      (b.calories || 0) +
-      (l.calories || 0) +
-      (d.calories || 0);
+      b.calories +
+      l.calories +
+      d.calories;
 
     output += `
       <div class="day-card">
