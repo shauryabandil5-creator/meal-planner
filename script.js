@@ -235,9 +235,9 @@ output += `
   <div class="day-card">
     <h4>${day}</h4>
 
-    <p>🍳 Breakfast: ${b.name}</p>
-    <p>🍛 Lunch: ${l.name}</p>
-    <p>🍲 Dinner: ${d.name}</p>
+   <p>🍳 Breakfast: ${JSON.stringify(b)}</p>
+   <p>🍛 Lunch: ${JSON.stringify(l)}</p>
+   <p>🍲 Dinner: ${JSON.stringify(d)}</p>
 
     <p>🔥 Calories: ${totalCalories} kcal</p>
     <p>💪 Protein: ${totalProtein} g</p>
